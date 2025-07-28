@@ -52,25 +52,37 @@ document.addEventListener("DOMContentLoaded", () => {
 				carbs: Math.round((calories * ratios.c) / 4), // 1 г углеводов = 4 ккал
 			};
 		}
-		// 5) Вывод результатов
-		resultDiv.innerHTML = `
-      <h3>Расчет суточной нормы калорий :</h3>
-      <p>По Харрису–Бенедикту ${tdeeHarris} ккал/день</p>
-      <p>По Миффлину–Сан Жеора ${tdeeMifflin} ккал/день</p>
 
-      <h3>Рекомендации для ${ratios.t}</h3>`;
 		// Берём среднее от всех четырёх границ для расчёта макро
 		const avgCalories = Math.round((rangeH.min + rangeH.max + rangeM.min + rangeM.max) / 4);
 		const macros = calcMacros(avgCalories);
-		resultDiv.innerHTML += `
-      <p>диапазон каллорий ${rangeMiddle.min}–${rangeMiddle.max} </p>
-      <p>суточная норма белка : ${macros.proteins} грамм</p>
-      <p>суточная норма белка жиров : ${macros.fats} грамм</p>
-      <p>суточная норма белка углеводов : ${macros.carbs} грамм</p>
-    `;
+
+		// 5) Вывод результатов
+		resultDiv.innerHTML = `
+	  <div class="calculation-result-inner">
+
+      	<h3>Расчет суточной нормы калорий :</h3>
+     	 <p>по Харрису–Бенедикту ${tdeeHarris} ккал/день</p>
+     	 <p>по Миффлину–Сан Жеора ${tdeeMifflin} ккал/день</p>
+
+     	 <h3>Рекомендации для ${ratios.t}</h3>		
+    	 <p>диапазон каллорий ${rangeMiddle.min}–${rangeMiddle.max} </p>
+     	 <p>суточная норма белков : ${macros.proteins} грамм</p>
+     	 <p>суточная норма жиров : ${macros.fats} грамм</p>
+      	<p>суточная норма углеводов : ${macros.carbs} грамм</p>
+	  </div>`;
+
+		// Скролл к элементу
+		resultDiv.scrollIntoView({ behavior: "smooth", block: "start" });
 	});
 
-	// Выбираем все input с типом number
+	// Сбрасываем результаты
+	form.addEventListener("reset", (event) => {
+		const resultDiv = document.getElementById("calorie-results");
+		resultDiv.innerHTML = "";
+	});
+
+	// Ограничитель min/max в input
 	const inputs = document.querySelectorAll('input[type="number"]');
 	inputs.forEach((input) => {
 		input.addEventListener("input", () => {
@@ -81,6 +93,22 @@ document.addEventListener("DOMContentLoaded", () => {
 				if (value > max) {
 					input.value = max; // Ограничение по max
 				}
+			}
+		});
+
+		input.addEventListener("keydown", (e) => {
+			// Разрешенные клавиши:
+			const allowedKeys = ["Backspace", "Tab", "ArrowLeft", "ArrowRight", "Delete", "Home", "End"];
+
+			// Проверка, если это цифра или запятая или точка
+			const isNumber = e.key >= "0" && e.key <= "9";
+
+			// Разрешаем, если клавиша есть в списке разрешенных или это разрешенная клавиша
+			if (allowedKeys.includes(e.key) || isNumber) {
+				// Можно оставить
+				return;
+			} else {
+				e.preventDefault(); // блокируем все остальные символы
 			}
 		});
 	});
