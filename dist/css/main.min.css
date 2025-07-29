@@ -26,12 +26,19 @@
   font-weight: 400;
   font-style: normal;
 }
-/* ------------------------------------------------------------------------------------------------------------------------------
-ROOT
---------------------------------------------------------------------------------------------------------------------------------*/
-:root {
-  --container-width: 1280px;
-  --container-padding: 15px;
+/*-------------------------------------------------------------------------------------------------------------------------
+EXTRA
+--------------------------------------------------------------------------------------------------------------------------*/
+.weblegko-container {
+  margin-inline: auto;
+  max-inline-size: 1280px;
+  padding-inline: 15px;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------
+CALLORIE CALCULATOR
+--------------------------------------------------------------------------------------------------------------------------*/
+.calorie-calculator {
   --font-main: "Roboto", sans-serif;
   --font-title: "Roboto", sans-serif;
   --accent: rgb(76, 175, 80);
@@ -39,143 +46,103 @@ ROOT
   --scrollbar: gray;
   --scrollbar-track: gray;
   --scrollbar-thumb: var(--accent);
+  min-inline-size: 280px;
+  max-inline-size: 1280px;
+  font-family: var(--font-main);
+  margin-inline: auto;
+  /* ------------------------------------------------------------------------------------------------------------------------------
+  RESET
+  --------------------------------------------------------------------------------------------------------------------------------*/
+  /* ------------------------------------------------------------------------------------------------------------------------------
+  MAIN STYLES
+  --------------------------------------------------------------------------------------------------------------------------------*/
 }
-
-/* ------------------------------------------------------------------------------------------------------------------------------
-RESET
---------------------------------------------------------------------------------------------------------------------------------*/
-* {
+.calorie-calculator * {
   margin: 0;
   border: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent;
 }
-*, *::before, *::after {
+.calorie-calculator *, .calorie-calculator *::before, .calorie-calculator *::after {
   box-sizing: border-box;
 }
-*:focus, *:active {
+.calorie-calculator *:focus, .calorie-calculator *:active {
   outline: none;
 }
-
-nav,
-footer,
-header,
-aside {
+.calorie-calculator nav,
+.calorie-calculator footer,
+.calorie-calculator header,
+.calorie-calculator aside {
   display: block;
 }
-
-html,
-body {
+.calorie-calculator html,
+.calorie-calculator body {
   inline-size: 100%;
   block-size: 100%;
 }
-
-body {
+.calorie-calculator body {
   overscroll-behavior: none;
   text-rendering: optimizelegibility;
   text-size-adjust: 100%;
-  font-family: var(--font-main);
   font-size: 1rem;
   font-weight: 400;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
-
-input,
-button,
-textarea {
+.calorie-calculator input,
+.calorie-calculator button,
+.calorie-calculator textarea {
   font-family: inherit;
 }
-
-input::-ms-clear {
+.calorie-calculator input::-ms-clear {
   display: none;
 }
-
-input[type=number] {
+.calorie-calculator input[type=number] {
   appearance: textfield;
 }
-input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button {
+.calorie-calculator input[type=number]::-webkit-outer-spin-button, .calorie-calculator input[type=number]::-webkit-inner-spin-button {
   appearance: none;
 }
-
-button {
+.calorie-calculator button {
   cursor: pointer;
   user-select: none;
   background-color: transparent;
 }
-button::-moz-focus-inner {
+.calorie-calculator button::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
-
-a {
+.calorie-calculator a {
   user-select: none;
   text-decoration: none;
 }
-a:hover {
+.calorie-calculator a:hover {
   text-decoration: none;
 }
-a:focus, a:active {
+.calorie-calculator a:focus, .calorie-calculator a:active {
   outline: none;
 }
-a:visited {
+.calorie-calculator a:visited {
   text-decoration: none;
 }
-
-ul,
-li {
+.calorie-calculator ul,
+.calorie-calculator li {
   list-style: none;
 }
-
-img {
+.calorie-calculator img {
   vertical-align: top;
 }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.calorie-calculator h1,
+.calorie-calculator h2,
+.calorie-calculator h3,
+.calorie-calculator h4,
+.calorie-calculator h5,
+.calorie-calculator h6 {
   font-size: inherit;
   font-weight: 400;
 }
-
-sup {
+.calorie-calculator sup {
   color: inherit;
-}
-
-/* ------------------------------------------------------------------------------------------------------------------------------
-BASE
---------------------------------------------------------------------------------------------------------------------------------*/
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  text-wrap: balance;
-}
-
-.weblegko-container {
-  margin-inline: auto;
-  max-inline-size: var(--container-width);
-  padding-inline: var(--container-padding);
-}
-
-.img-responsive {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  overflow: hidden;
-}
-
-/*-------------------------------------------------------------------------------------------------------------------------
-CALLORIE CALCULATOR
---------------------------------------------------------------------------------------------------------------------------*/
-.calorie-calculator {
-  min-inline-size: 280px;
-  max-inline-size: 1280px;
-  margin-inline: auto;
 }
 .calorie-calculator h2.calorie-calculator-title {
   font-family: inherit;

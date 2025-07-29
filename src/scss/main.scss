@@ -1,17 +1,16 @@
 @use "sass:math";
 
-@import "config/fonts";
-
-@import "config/root";
-
-@import "config/reset";
-
 @import "config/functions";
 
 @import "config/mixins";
 
-@import "config/base";
+@import "config/fonts";
 
 @import "components/*.scss";
+
+
+
+
+
 
 
